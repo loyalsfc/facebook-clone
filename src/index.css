@@ -2,9 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --pry-blue: #2E81F4
+}
+
 @layer utilities{
     .header__option{
         @apply flex items-center px-[30px] cursor-pointer hover:bg-[#eff2f5] hover:rounded-[10px] hover:items-center hover:px-[30px] hover:border-b-0 
+    }
+    .sender-input{
+        @apply outline-0 focus:outline-0 border-0 py-[5px] px-5 mx-2.5 rounded-full bg-light-grey
+    }
+    .post__option{
+        @apply pt-2.5 border-t border-t-light-grey flex justify-evenly text-[medium] text-[gray] cursor-pointer p-[15px] hover:bg-light-grey hover:rounded-[10px]
+    }
+    .post__option > p{
+        @apply ml-2.5
+    }
+    .login button {
+        @apply w-[300px] bg-[#c6cacf] text-light-grey font-[800] hover:text-blue hover:bg-white
     }
 }
 
@@ -12,13 +28,18 @@
     color: gray;
 }
 .header__option > .MuiSvgIcon-root:hover{
-    color: #2E81F4;
+    color: var(--pry-blue);
 }
 
 .header__option--active{
-    border-bottom: 4px solid #2E81F4;
+    border-bottom: 4px solid var(--pry-blue);
 }
 
 .header__option--active > .MuiSvgIcon-root{
-    color: #2E81F4;
+    color: var(--pry-blue);
+} 
+
+.sidebar-row > .MuiSvgIcon-root{
+    font-size: xx-large;
+    color: var(--pry-blue);
 } 

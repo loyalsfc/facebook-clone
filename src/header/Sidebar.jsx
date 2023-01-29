@@ -10,12 +10,12 @@ import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 
 function Sidebar() {
     const user = {
-        photoURL: '',
+        photoURL: 'https://images.pexels.com/photos/4924538/pexels-photo-4924538.jpeg?auto=compress&cs=tinysrgb&w=600',
         displayName: 'Olumide Bambe'
     }
 
     return (
-        <aside>
+        <aside className='py-[25px] px-2.5 flex-[0.33]'>
             <SidebarRow src={user.photoURL} title={user.displayName}/>
             <SidebarRow Icon={LocalHospitalIcon} title="COVID-19 Information Center" />
             <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
