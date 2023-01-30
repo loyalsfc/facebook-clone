@@ -7,12 +7,11 @@ import ChatIcon from '@mui/icons-material/Chat';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import { useStateValue } from '../StateProvider';
 
 function Sidebar() {
-    const user = {
-        photoURL: 'https://images.pexels.com/photos/4924538/pexels-photo-4924538.jpeg?auto=compress&cs=tinysrgb&w=600',
-        displayName: 'Olumide Bambe'
-    }
+    const [{user}, dispatch] =  useStateValue()
+
 
     return (
         <aside className='py-[25px] px-2.5 flex-[0.33]'>

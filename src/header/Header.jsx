@@ -10,8 +10,11 @@ import AddIcon from '@mui/icons-material/Add';
 import ForumIcon from '@mui/icons-material/Forum';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useStateValue } from '../StateProvider';
 
 function Header() {
+      const [{user}, dispatch] =  useStateValue()
+
       return (
         <div className='flex py-4 px-5 justify-between bg-white z-50 sticky top-0 shadow-[0px_5px_8px_-9px_rgba(0,0,0,0.75)]'>
           <div className="flex justify-evenly">
@@ -40,8 +43,8 @@ function Header() {
           </div>
           <div className="flex">
             <div className="flex items-center">
-              <Avatar />
-              <h4 className='pl-2.5 font-medium'>Olu Mide</h4>
+              <Avatar src={user.photoURL}/>
+              <h4 className='pl-2.5 font-medium'>{user.displayName}</h4>
             </div>
             <IconButton>
               <AddIcon/>

@@ -4,8 +4,11 @@ import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import React from 'react'
 import { useState } from 'react';
+import { useStateValue } from '../StateProvider';
 
 function MessageSender() {
+    const [{user}, dispatch] =  useStateValue()
+
     const [input, setInput] = useState('')
     const [imageUrl, setImageUrl] = useState('')
 
@@ -19,7 +22,7 @@ function MessageSender() {
     return (
         <div className='flex mt-[30px] flex-col bg-white rounded-[15px] shadow-7xl w-full'>
             <div className='flex border border-light-grey p-[15px]'>
-                <Avatar />
+                <Avatar src={user.photoURL}/>
                 <form className='flex-1 flex'>
                     <input 
                         className='sender-input flex-1'
