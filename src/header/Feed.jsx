@@ -11,16 +11,12 @@ function Feed() {
 
     useEffect(()=>{
         async function fetchData() {
-            // console.log(await getDocs(collection(db, "post")));
             const querySnapshot = await getDocs(collection(db, "post"))
-            setPosts(querySnapshot.map((doc) => ({id: doc.id, data: doc.data() })))
-            console.log(querySnapshot)
-            // querySnapshot.forEach((doc) => {
-            //     console.log(doc)
-            //     console.log(doc.data())
-            //     console.log(doc.id)
-            //     console.log(`${doc.id} => ${doc.data()}`);
-            // });
+            let datas = []
+            querySnapshot.forEach((doc) => {
+                datas.push({id: doc.id, data: doc.data() })
+            });
+            setPosts(datas)
         }
 
         fetchData()
@@ -34,12 +30,14 @@ function Feed() {
             <StoryReel />
             <MessageSender />
             {posts.map((post)=>{
+                console.log(post)
                 return <Post 
-                    profilePic = {post.profilePic}
-                    image={post.image}
-                    username={post.username}
-                    timestamp={post.timestamp}
-                    message={post.message}
+                    key={post.id}
+                    profilePic = {post.data.profilepic}
+                    image={post.data.image}
+                    username={post.data.username}
+                    timestamp={post.data.timestamp}
+                    message={post.data.message}
                 />
             })}
             {/* <Post />

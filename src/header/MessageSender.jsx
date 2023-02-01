@@ -1,3 +1,4 @@
+import { collection, addDoc } from "firebase/firestore"; 
 import { Avatar } from '@mui/material'
 import VideocamIcon from '@mui/icons-material/Videocam';
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
@@ -5,6 +6,7 @@ import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import React from 'react'
 import { useState } from 'react';
 import { useStateValue } from '../StateProvider';
+import db from "../firebase";
 
 function MessageSender() {
     const [{user}, dispatch] =  useStateValue()
@@ -15,8 +17,24 @@ function MessageSender() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        submitPost()
         setInput('')
         setImageUrl('')
+    }
+
+    async function submitPost(){
+        try {
+            const docRef = await addDoc(collection(db, "post"), {
+                image: imageUrl,
+                message: input,
+                profilepic: user.photoURL,
+                timestamp: new Date(),
+                username: user.displayName
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch(e){
+            console.error("Error adding document: ", e);
+        }
     }
 
     return (

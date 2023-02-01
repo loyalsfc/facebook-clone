@@ -11,7 +11,7 @@ function App() {
 
 
   return (
-    <div className="App bg-[#f1f2f5] h-screen">
+    <div className="App bg-[#f1f2f5] min-h-screen">
       {!user ? (
         <Login />
       ) : (

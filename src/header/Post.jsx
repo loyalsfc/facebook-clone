@@ -14,7 +14,7 @@ function Post({profilePic, image, username, timestamp, message}) {
                 <Avatar src={profilePic} className="mr-2.5" />
                 <div>
                     <h3 className='text-[medium]'>{username}</h3>
-                    <p className='text-[small] text-[gray]'>Timestamp...</p>
+                    <p className='text-[small] text-[gray]'>{new Date(timestamp?.toDate()).toUTCString()}</p>
                 </div>
             </div>
             <div className='my-2.5 py-[15px] px-[25px]'>
